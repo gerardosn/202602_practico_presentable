@@ -1,0 +1,121 @@
+:root {
+    /* Material Design 3 Color Palette (3 Key Elements: Primary, Surface, Accent) */
+    --md-sys-color-primary: #6750A4;
+    --md-sys-color-primary-container: #EADDFF;
+    --md-sys-color-on-primary-container: #21005D;
+    --md-sys-color-surface: #FEF7FF;
+    --md-sys-color-surface-container-high: #F3EDF7;
+    --md-sys-color-on-surface: #1D1B20;
+    --md-sys-color-outline-variant: #CAC4D0;
+    
+    /* Typography */
+    --font-family-main: 'Roboto', sans-serif;
+    
+    /* Spacing & Shapes */
+    --shape-extra-large: 28px;
+    --padding-card: 48px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family-main);
+    background-color: var(--md-sys-color-surface);
+    color: var(--md-sys-color-on-surface);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: radial-gradient(circle at top left, #F3EDF7 0%, #FEF7FF 100%);
+}
+
+.container {
+    perspective: 1000px;
+}
+
+.card {
+    background-color: var(--md-sys-color-surface-container-high);
+    padding: var(--padding-card);
+    border-radius: var(--shape-extra-large);
+    text-align: center;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05), 
+                0 1px 3px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(103, 80, 164, 0.1);
+    max-width: 400px;
+    width: 90vw;
+    animation: fadeInScale 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 40px rgba(103, 80, 164, 0.15);
+}
+
+.title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--md-sys-color-primary);
+    margin-bottom: 24px;
+    letter-spacing: -0.5px;
+    text-transform: lowercase; /* As requested: "hola mundo" */
+}
+
+.divider {
+    height: 1px;
+    background-color: var(--md-sys-color-outline-variant);
+    width: 60%;
+    margin: 0 auto 24px;
+    opacity: 0.5;
+}
+
+.time-label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--md-sys-color-on-surface);
+    opacity: 0.7;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.clock-display {
+    font-family: 'Roboto', monospace;
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: var(--md-sys-color-on-primary-container);
+    background-color: var(--md-sys-color-primary-container);
+    padding: 16px 24px;
+    border-radius: 16px;
+    display: inline-block;
+}
+
+/* Animations */
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .title {
+        font-size: 2.25rem;
+    }
+    .clock-display {
+        font-size: 1.75rem;
+    }
+    .card {
+        padding: 32px;
+    }
+}
